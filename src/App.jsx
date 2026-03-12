@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 import  HomePage  from './pages/HomePage'
-import CheckoutPage from './Pages/CheckoutPage'
+import CheckoutPage from './pages/checkout/CheckoutPage'
 import OrderPage from './Pages/OrderPage'
 import TrackingPage from './pages/TrackingPage'
 //import CheckoutPage from './pages/CheckoutPage'

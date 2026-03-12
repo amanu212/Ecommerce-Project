@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import './Checkout-Header.css'
+import './CheckoutHeader.css'
 
 function CheckoutHeader() {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckoutHeader from '../components/CheckoutHeader'
+import CheckoutHeader from './CheckoutHeader';
 
 import './Checkout.css'
 
