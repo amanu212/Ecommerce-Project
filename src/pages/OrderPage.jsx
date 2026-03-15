@@ -4,14 +4,14 @@ import OrderLogo from '../assets/images/orders-favicon.png'
 import BuyAgain from '../assets/images/icons/buy-again.png'
 import './orders.css'
 
-function OrderPage() {
+function OrderPage({cart}) {
   return (
     <>
 
     <title>Orders Page</title>
     <link rel="icon" type="image/svg+xml" href={OrderLogo} />
 
-    <Header />
+    <Header cart = {cart}/>
 
     <div className="orders-page">
       <div className="page-title">Your Orders</div>

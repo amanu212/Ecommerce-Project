@@ -6,27 +6,9 @@ import { useEffect, useState } from 'react'
 import  Header from '../components/Header'
 import HomeFavicon from '../assets/images/home-favicon.png'
 import './HomePage.css'
+import { formatMoney } from '../utils/formatMoney'
 
- function HomePage()  {
-
-  const [products, setProducts ] = useState([])
-  const [cart, setCart] = useState([])
-
-
-  useEffect(() => {
-    axios.get('/api/products')
-      .then((response) => {
-        setProducts(response.data)
-        })
-
-    axios.get('/api/cart-items')
-      .then((response) => {
-        setCart(response.data)
-      }
-    )
-
-    
-      }, [])
+ function HomePage({products, cart})  {
 
   return (
     <>
@@ -50,8 +32,8 @@ import './HomePage.css'
             {product.name}
           </div>
 
-          <div className="product-rating-container">
-            <img className="product-rating-stars"
+          <div className = "product-rating-container">
+            <img className = "product-rating-stars"
               src={`images/ratings/rating-${product.rating.stars*10}.png`} />
             <div className="product-rating-count link-primary">
               {product.count}
@@ -59,7 +41,7 @@ import './HomePage.css'
           </div>
 
           <div className="product-price">
-            ${(product.priceCents/100).toFixed(2)}
+            {formatMoney(product.priceCents)}
           </div>
 
           <div className="product-quantity-container">
