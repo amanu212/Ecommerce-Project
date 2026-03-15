@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 //import { useState, useEffect } from 'react'
 //Import the data for the products container
 import { products } from '../../Starting-code/data/products'
@@ -8,12 +9,11 @@ import './HomePage.css'
 
 function HomePage()  {
 
-  fetch('http://localhost:3000/api/products')
+  axios.get('http://localhost:3000/api/products')
     .then((response) => {
-      response.json().then((data) => {
-        console.log(data)
+      console.log(response.data)
       })
-    })
+
   return (
     <>
       <title>Home Page</title>
