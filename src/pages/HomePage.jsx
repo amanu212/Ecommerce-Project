@@ -2,30 +2,38 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 //Import the data for the products container
-import { products } from '../../Starting-code/data/products'
+//import { products } from '../../Starting-code/data/products'
 import  Header from '../components/Header'
 import HomeFavicon from '../assets/images/home-favicon.png'
 import './HomePage.css'
 
  function HomePage()  {
 
-  const [loadProducts, setLoadProducts ] = useState([])
+  const [products, setProducts ] = useState([])
+  const [cart, setCart] = useState([])
+
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/products')
+    axios.get('/api/products')
       .then((response) => {
-        setLoadProducts(response.data)
+        setProducts(response.data)
         })
-  }, [])
 
-  console.log(loadProducts)
+    axios.get('/api/cart-items')
+      .then((response) => {
+        setCart(response.data)
+      }
+    )
+
+    
+      }, [])
 
   return (
     <>
       <title>Home Page</title>
       <link rel="icon" type="image/svg+xml" href={HomeFavicon} />
 
-      <Header />
+      <Header cart = {cart} />
 
     <div className="home-page">
       <div className="products-grid">

@@ -3,7 +3,16 @@ import React from "react";
 import "./Header.css"
 import CartIcon from '../assets/images/icons/cart-icon.png'
 import SearchArrow from '../assets/images/icons/search-icon.png'
-function Header() {
+function Header({cart}) {
+
+  let totalQuantity = 0;
+
+  cart.forEach((item) => {
+    totalQuantity += item.quantity
+  })
+
+
+  //console.log(cart);
   return (
       <div className="header">
           <div className="left-section">
@@ -31,7 +40,7 @@ function Header() {
 
             <NavLink className="cart-link header-link" to="/checkout">
               <img className="cart-icon" src={CartIcon} />
-              <div className="cart-quantity">3</div>
+              <div className="cart-quantity">{totalQuantity}</div>
               <div className="cart-text">Cart</div>
             </NavLink>
           </div>
