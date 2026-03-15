@@ -1,18 +1,24 @@
 import React from 'react'
 import axios from 'axios'
-//import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 //Import the data for the products container
 import { products } from '../../Starting-code/data/products'
 import  Header from '../components/Header'
 import HomeFavicon from '../assets/images/home-favicon.png'
 import './HomePage.css'
 
-function HomePage()  {
+ function HomePage()  {
 
-  axios.get('http://localhost:3000/api/products')
-    .then((response) => {
-      console.log(response.data)
-      })
+  const [loadProducts, setLoadProducts ] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/products')
+      .then((response) => {
+        setLoadProducts(response.data)
+        })
+  }, [])
+
+  console.log(loadProducts)
 
   return (
     <>
