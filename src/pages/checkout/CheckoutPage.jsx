@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckoutHeader from './CheckoutHeader';
-
+import CartFavicon from '../../assets/images/cart-favicon.png'
 import './Checkout.css'
 
 
@@ -9,6 +9,7 @@ function CheckoutPage() {
     <>
 
     <title>Checkout Page</title>
+    <link rel="icon" type="image/svg+xml" href={CartFavicon} />
 
     <CheckoutHeader />
 

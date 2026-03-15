@@ -38,6 +38,7 @@
   border: 1px solid white;
 }
 
+
 .header .logo {
   height: 26px;
   margin-top: 1px;
@@ -146,4 +147,8 @@
 
   width: 26px;
   text-align: center;
+}
+
+.orders-link.active {
+  text-decoration: underline;
 }

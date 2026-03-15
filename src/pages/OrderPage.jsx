@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header'
-
+import OrderLogo from '../assets/images/orders-favicon.png'
+import BuyAgain from '../assets/images/icons/buy-again.png'
 import './orders.css'
 
 function OrderPage() {
@@ -8,6 +9,7 @@ function OrderPage() {
     <>
 
     <title>Orders Page</title>
+    <link rel="icon" type="image/svg+xml" href={OrderLogo} />
 
     <Header />
 
@@ -51,7 +53,7 @@ function OrderPage() {
                 Quantity: 1
               </div>
               <button className="buy-again-button button-primary">
-                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                <img className="buy-again-icon" src={BuyAgain} />
                 <span className="buy-again-message">Add to Cart</span>
               </button>
             </div>
@@ -79,7 +81,7 @@ function OrderPage() {
                 Quantity: 2
               </div>
               <button className="buy-again-button button-primary">
-                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                <img className="buy-again-icon" src={BuyAgain} />
                 <span className="buy-again-message">Add to Cart</span>
               </button>
             </div>
@@ -130,7 +132,7 @@ function OrderPage() {
                 Quantity: 2
               </div>
               <button className="buy-again-button button-primary">
-                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                <img className="buy-again-icon" src={BuyAgain} />
                 <span className="buy-again-message">Add to Cart</span>
               </button>
             </div>
