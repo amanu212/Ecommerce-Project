@@ -8,7 +8,8 @@ import HomeFavicon from '../assets/images/home-favicon.png'
 import './HomePage.css'
 import { formatMoney } from '../utils/formatMoney'
 
- function HomePage({products, cart})  {
+
+  function HomePage({products, cart})  {
 
   return (
     <>
