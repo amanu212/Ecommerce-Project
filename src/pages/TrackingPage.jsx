@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import Header from '../components/Header'
 import './tracking.css'
 
-function TrackingPage() {
+function TrackingPage({cart}) {
 
   return (
     <>
@@ -11,7 +11,7 @@ function TrackingPage() {
     <title>Tracking Page</title>
     <link rel="icon" type="image/svg+xml" href="../../public/tracking-favicon.png" />
 
-    <Header />
+    <Header cart = {cart} />
 
     <div className="tracking-page">
       <div className="order-tracking">

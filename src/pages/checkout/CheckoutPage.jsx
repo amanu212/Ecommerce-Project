@@ -52,7 +52,7 @@ function CheckoutPage({cart}) {
       <div className="checkout-grid">
         <div className="order-summary">
           
-          { cart.map((item) => {
+          {deliveryOptions.length > 0 && cart.map((item) => {
 
               const selectedDeliveryOption = deliveryOptions
                 .find((deliveryOption) => {
