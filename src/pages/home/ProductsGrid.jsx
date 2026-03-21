@@ -1,29 +1,17 @@
 import React from 'react'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-//Import the data for the products container
-//import { products } from '../../Starting-code/data/products'
-import  Header from '../components/Header'
-import HomeFavicon from '../assets/images/home-favicon.png'
-import './HomePage.css'
-import { formatMoney } from '../utils/formatMoney'
+import { formatMoney } from '../../utils/formatMoney'
+import './Homepage.css'
 
 
-  function HomePage({products, cart})  {
-
+function ProductsGrid({ products }) {
   return (
-    <>
-      <title>Home Page</title>
-      <link rel="icon" type="image/svg+xml" href={HomeFavicon} />
 
-      <Header cart = {cart} />
 
-    <div className="home-page">
-      <div className="products-grid">
-        
-        {products.map((product) => {
-          return (
-          <div key = {product.id} className="product-container">
+  <div className="products-grid">
+
+    {products.map((product) => {
+      return (
+        <div key={product.id} className="product-container">
           <div className="product-image-container">
             <img className="product-image"
               src={product.image} />
@@ -33,9 +21,9 @@ import { formatMoney } from '../utils/formatMoney'
             {product.name}
           </div>
 
-          <div className = "product-rating-container">
-            <img className = "product-rating-stars"
-              src={`images/ratings/rating-${product.rating.stars*10}.png`} />
+          <div className="product-rating-container">
+            <img className="product-rating-stars"
+              src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
             <div className="product-rating-count link-primary">
               {product.count}
             </div>
@@ -71,12 +59,10 @@ import { formatMoney } from '../utils/formatMoney'
             Add to Cart
           </button>
         </div>
-        )
-        })}      
-      </div>
-    </div>
-  </>
-  );
+      )
+    })}
+  </div>
+    )
 }
 
-export default HomePage;
+export default ProductsGrid
