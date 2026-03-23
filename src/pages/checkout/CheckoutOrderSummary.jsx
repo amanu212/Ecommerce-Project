@@ -1,5 +1,7 @@
 import React from 'react'
 import dayjs from 'dayjs'
+import CartItemDetails from './cartItemDetails'
+import DeliveryDate from './DeliveryDate'
 import { formatMoney } from '../../utils/formatMoney'
 import './Checkout.css'
 function CheckoutOrderSummary({cart, deliveryOptions}) {
@@ -17,33 +19,11 @@ function CheckoutOrderSummary({cart, deliveryOptions}) {
 
         return (
           <div key={item.id} className="cart-item-container">
-            <div className="delivery-date">
-              Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
-            </div>
+            <DeliveryDate selectedDeliveryOption = {selectedDeliveryOption} /> 
 
             <div className="cart-item-details-grid">
-              <img className="product-image"
-                src={item.product.image} />
-
-              <div className="cart-item-details">
-                <div className="product-name">
-                  {item.product.name}
-                </div>
-                <div className="product-price">
-                  {formatMoney(item.product.priceCents)}
-                </div>
-                <div className="product-quantity">
-                  <span>
-                    Quantity: <span className="quantity-label">{item.quantity}</span>
-                  </span>
-                  <span className="update-quantity-link link-primary">
-                    Update
-                  </span>
-                  <span className="delete-quantity-link link-primary">
-                    Delete
-                  </span>
-                </div>
-              </div>
+              <CartItemDetails cart = {cart}
+              item = {item}/>
 
               <div className="delivery-options">
                 <div className="delivery-options-title">

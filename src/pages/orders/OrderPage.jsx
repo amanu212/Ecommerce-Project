@@ -9,16 +9,20 @@ import BuyAgain from '../../assets/images/icons/buy-again.png'
 import './orders.css'
 import { formatMoney } from '../../utils/formatMoney';
 
-  function OrderPage({ cart }) {
+  function OrderPage({ cart, orders }) {
 
-    const [orders, setOrders] = useState([]);
+    //const [orders, setOrders] = useState([]);
 
+    /*
     useEffect(() => {
-      axios.get(('/api/orders?expand=products'))
-        .then((response) => {
-          setOrders(response.data)
-        })
+      const ordersData = async () => {
+        const ordersData = await axios.get(('/api/orders?expand=products'))
+          setOrders(ordersData.data)
+      }
+        ordersData();
     }, []);
+
+    */
 
     //console.log(orders)
     return (
