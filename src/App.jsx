@@ -16,17 +16,19 @@ function App() {
   const [cart, setCart] = useState([])
   const [orders, setOrders] = useState([]);
 
+  const loadProduct = async () => {
+    const productsResponse = await axios.get('/api/products')
+      setProducts(productsResponse.data)
+  }
+  const loadCart = async () => {   
+    const cartsResponse = await axios.get('/api/cart-items?expand=product')
+        setCart(cartsResponse.data)
+  }
+
   useEffect(() => {
-    const getHomeData = async () => {
 
-      const productsResponse = await axios.get('/api/products')
-        setProducts(productsResponse.data)
-        
-      const cartsResponse = await axios.get('/api/cart-items?expand=product')
-          setCart(cartsResponse.data)
-    }
-
-    getHomeData()
+    loadProduct()
+    loadCart()
 
     const ordersData = async () => {
       const ordersData = await axios.get('/api/orders?expand=products')
@@ -40,14 +42,15 @@ function App() {
   return (
     <Routes>
       <Route path = '/' element = {<HomePage cart = {cart}
-                                             products = {products}/>} />
+                                             products = {products}
+                                             loadCart = {loadCart}/>} />
       <Route path="checkout" element = {<CheckoutPage cart = {cart}
                                                       products = {products}/>} />
       <Route path="orders" element = {<OrderPage cart = {cart} 
                                                  orders= {orders}/>} />
       <Route path="tracking/:orderId/:productId" element = {<TrackingPage cart = {cart}
                                                                           orders = {orders}/>} />
-      <Route path = '*' element = {<ErrorPage />} />
+      <Route path = '*' element = {<ErrorPage cart = {cart} />} />
     </Routes>
   )
 }

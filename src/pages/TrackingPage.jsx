@@ -51,10 +51,20 @@ function TrackingPage({ cart, orders }) {
           }
 
           const deliveryDate = dayjs(item.estimatedDeliveryTimeMs).format('dddd, MMMM D');
-          const totalDeliveryTimeMs = item.estimateDeliveryTimeMs - tracking.orderTimeMs;
-          const timePassedMs = dayjs().valueOf() - tracking.orderTimeMs;
-          const deliveryProgress = (timePassedMs / totalDeliveryTimeMs);
-          console.log(deliveryProgress)
+          const totalDeliveryTimeMs = item.estimatedDeliveryTimeMs - tracking.orderTimeMs;
+          //const timePassedMs = dayjs().valueOf() - tracking.orderTimeMs;
+          const timePassedMs = totalDeliveryTimeMs * 0.5
+          let deliveryProgress = (timePassedMs / totalDeliveryTimeMs) * 100;
+
+          /*
+          if(deliveryProgress > 100) {
+            deliveryProgress = 100
+            console.log(deliveryProgress)
+          }
+          */
+         const isPreparing = deliveryProgress < 33;
+         const isShipped = deliveryProgress>=33 && deliveryProgress < 100;
+         const isDelivered = deliveryProgress >=100;
 
           return (
             <div className="tracking-page">
@@ -64,7 +74,7 @@ function TrackingPage({ cart, orders }) {
                 </Link>
 
                 <div className="delivery-date">
-                  Arriving on {deliveryDate}
+                  {deliveryProgress === 100 ? `Delivered on ${deliveryDate}` : `Arriving On ${deliveryDate}`}
                 </div>
 
                 <div className="product-info">
@@ -83,13 +93,14 @@ function TrackingPage({ cart, orders }) {
 
                 {/* Keep progress bar unchanged for now */}
                 <div className="progress-labels-container">
-                  <div className="progress-label">Preparing</div>
-                  <div className="progress-label current-status">Shipped</div>
-                  <div className="progress-label">Delivered</div>
+                  
+                  <div className={`progress-label ${isPreparing && 'current-status'}`}>Preparing</div>
+                  <div className={`progress-label ${isShipped && 'current-status'}`}>Shipped</div>
+                  <div className={`progress-label ${isDelivered && 'current-status'}`}>Delivered</div>
                 </div>
 
                 <div className="progress-bar-container">
-                  <div className="progress-bar"></div>
+                  <div className="progress-bar" style = {{width: `${deliveryProgress}%`}}></div>
                 </div>
               </div>
             </div>

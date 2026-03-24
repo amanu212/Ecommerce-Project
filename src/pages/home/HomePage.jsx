@@ -10,7 +10,7 @@ import './HomePage.css'
 import { formatMoney } from '../../utils/formatMoney'
 
 
-  function HomePage({products, cart})  {
+  function HomePage({products, cart, loadCart})  {
 
   return (
     <>
@@ -20,7 +20,8 @@ import { formatMoney } from '../../utils/formatMoney'
       <Header cart = {cart} />
 
     <div className="home-page">
-      <ProductsGrid products = {products}/>
+      <ProductsGrid products = {products}
+                    loadCart = {loadCart}/>
     </div>
   </>
   );
