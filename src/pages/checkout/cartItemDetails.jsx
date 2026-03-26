@@ -1,17 +1,16 @@
 import React from 'react'
-import { useState, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Checkout.css'
 import { Fragment } from 'react'
 import { formatMoney } from '../../utils/formatMoney'
 
-function CartItemDetails({ cart, item, loadCart }) {
+function CartItemDetails({ item, loadCart }) {
 
-  const [cartQuantity, setCartQuantity] = useState(1);
+  const [cartQuantity, setCartQuantity] = useState(item.quantity);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const quantityContainer = useRef(null)
-  const updateSpan = useRef(null)
-  const deleteSpan = useRef(null)
+
 
   const deleteCartItem = async () => {
 
@@ -22,12 +21,27 @@ function CartItemDetails({ cart, item, loadCart }) {
     await loadCart();
   }
 
+   
+
+  const updateInputValue = (event) => {
+    const cartQuantitySelected = Number(event.target.value);
+    setCartQuantity(cartQuantitySelected);
+  }
+
   const updateCartItem = async () => {
 
     await axios.put(`/api/cart-items/${item.productId}`, {
       productId: item.productId,
-    })   
+      quantity: cartQuantity
+    })
+
+    await loadCart();
+    setIsEditing(false)
   }
+
+  useEffect(() => {
+    setCartQuantity(item.quantity)
+  }, [item.quantity])
 
 
   return (
@@ -42,16 +56,30 @@ function CartItemDetails({ cart, item, loadCart }) {
         <div className="product-price">
           {formatMoney(item.product.priceCents)}
         </div>
-        <div ref={quantityContainer} className="product-quantity">
-          <span>
-            Quantity: <span className="quantity-label">{item.quantity}</span>
-          </span>
-          <span className="update-quantity-link link-primary" ref={updateSpan} onClick = {updateCartItem}>
-            Update
-          </span>
-          <span ref={deleteSpan} className="delete-quantity-link link-primary" onClick = {deleteCartItem}>
-            Delete
-          </span>
+        <div className="product-quantity">
+          {isEditing === false ? (
+
+            <>
+              <span className="quantity-span">
+                Quantity: <span className="quantity-label">{item.quantity}</span>
+              </span>
+              <span className="update-quantity-link link-primary" onClick={() => {setIsEditing(true)}}>
+                Update
+              </span>
+              <span className="delete-quantity-link link-primary" onClick={deleteCartItem}>
+                Delete
+              </span>
+            </>
+          )
+            : (
+              <>
+                <input value={cartQuantity} type='number' className='quantity-selector' onChange={updateInputValue} />
+                <span onClick={updateCartItem} className = 'save-cancel-span'>Save</span>
+                <span onClick={() => {setIsEditing(false)}} className = 'save-cancel-span'>Cancel</span>
+              </>
+            )
+          }
+
         </div>
       </div>
     </Fragment>

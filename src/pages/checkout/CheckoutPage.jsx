@@ -28,7 +28,7 @@ function CheckoutPage({cart, loadCart}) {
     fetchCheckoutData()
   }, [cart])
 
-  console.log(paymentSummary);
+  //console.log(paymentSummary);
 
 
   //console.log(deliveryOptions);

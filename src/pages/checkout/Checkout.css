@@ -216,3 +216,8 @@
   padding: 10px;
 
 }
+
+.save-cancel-span {
+  color: green;
+  padding: 3px;
+}
