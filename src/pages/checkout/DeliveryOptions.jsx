@@ -27,14 +27,14 @@ function DeliveryOptions( {cart, deliveryOptions, item, loadCart} ) {
             deliveryOptionId: deliveryOption.id
           })
 
-          loadCart();
+         await loadCart();
         }
         return (
           <div key={deliveryOption.id} className="delivery-option" onClick = {updateDeliveryOptions}>
             <input type="radio"
               className="delivery-option-input"
               name={`delivery-option-${item.productId}`} 
-              checked = {deliveryOptions.id === item.deliveryOptionId}/>
+              {...deliveryOptions.id === item.deliveryOptionId && `Checked`}/>
             <div>
               <div className="delivery-option-date">
                 {dayjs(deliveryOption.

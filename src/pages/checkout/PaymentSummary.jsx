@@ -3,9 +3,12 @@ import './Checkout.css'
 import { formatMoney } from '../../utils/formatMoney'
 
 
-function PaymentSummary({ paymentSummary }) {
+function PaymentSummary({ paymentSummary, loadCart }) {
+
 
   return (
+
+
     <div className="payment-summary">
       {paymentSummary && (
         <>
@@ -42,6 +45,7 @@ function PaymentSummary({ paymentSummary }) {
             Place your order
           </button>
         </>
+        
       )}
 
     </div>
