@@ -1,15 +1,22 @@
 import React from 'react'
+import { useState, useRef } from 'react'
 import './Checkout.css'
 import { Fragment } from 'react'
 import { formatMoney } from '../../utils/formatMoney'
 
-function CartItemDetails({cart, item}) {
+function CartItemDetails({ cart, item, loadCart }) {
+
+  const [cartQuantity, setCartQuantity] = useState(1);
+
+  const quantityContainer = useRef(null)
+  const updateSpan = useRef(null)
+  const deleteSpan = useRef(null)
 
   return (
     <Fragment>
       <img className="product-image"
         src={item.product.image} />
-    
+
       <div className="cart-item-details">
         <div className="product-name">
           {item.product.name}
@@ -17,14 +24,14 @@ function CartItemDetails({cart, item}) {
         <div className="product-price">
           {formatMoney(item.product.priceCents)}
         </div>
-        <div className="product-quantity">
+        <div ref={quantityContainer} className="product-quantity">
           <span>
             Quantity: <span className="quantity-label">{item.quantity}</span>
           </span>
-          <span className="update-quantity-link link-primary">
+          <span className="update-quantity-link link-primary" ref={updateSpan}>
             Update
           </span>
-          <span className="delete-quantity-link link-primary">
+          <span ref={deleteSpan} className="delete-quantity-link link-primary">
             Delete
           </span>
         </div>

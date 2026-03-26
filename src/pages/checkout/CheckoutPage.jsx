@@ -9,7 +9,7 @@ import './Checkout.css'
 import { formatMoney } from '../../../src/utils/formatMoney'
 import dayjs from 'dayjs';
 
-function CheckoutPage({cart}) {
+function CheckoutPage({cart, loadCart}) {
 
 
   const [deliveryOptions, setDeliveryOptions] = useState([]);
@@ -54,7 +54,8 @@ function CheckoutPage({cart}) {
       <div className="checkout-grid">
 
         <CheckoutOrderSummary cart = {cart} 
-                      deliveryOptions = {deliveryOptions}/>
+                      deliveryOptions = {deliveryOptions}
+                      loadCart = {loadCart}/>
 
         <PaymentSummary paymentSummary = {paymentSummary} />
       </div>

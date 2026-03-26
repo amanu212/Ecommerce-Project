@@ -209,3 +209,10 @@
   margin-top: 20px;
   margin-bottom: 19px;
 }
+
+.update-input-field {
+  display: block;
+  width: 60px;
+  padding: 10px;
+
+}

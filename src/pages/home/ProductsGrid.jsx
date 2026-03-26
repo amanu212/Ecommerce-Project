@@ -21,7 +21,7 @@ function ProductsGrid({ products, loadCart }) {
         )
       })}
     </div>
-  )
+  ) 
 }
 
 export default ProductsGrid

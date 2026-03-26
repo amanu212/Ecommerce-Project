@@ -2,9 +2,10 @@ import React from 'react'
 import dayjs from 'dayjs'
 import CartItemDetails from './cartItemDetails'
 import DeliveryDate from './DeliveryDate'
+import DeliveryOptions from './DeliveryOptions'
 import { formatMoney } from '../../utils/formatMoney'
 import './Checkout.css'
-function CheckoutOrderSummary({cart, deliveryOptions}) {
+function CheckoutOrderSummary({cart, deliveryOptions, loadCart}) {
   
   return (
     <div className="order-summary">
@@ -23,39 +24,13 @@ function CheckoutOrderSummary({cart, deliveryOptions}) {
 
             <div className="cart-item-details-grid">
               <CartItemDetails cart = {cart}
-              item = {item}/>
+                               item = {item}
+                               loadCart = {loadCart}/>
 
-              <div className="delivery-options">
-                <div className="delivery-options-title">
-                  Choose a delivery option:
-                </div>
-                {deliveryOptions.map((deliveryOption) => {
+              <DeliveryOptions item = {item} 
+                               deliveryOptions = {deliveryOptions}
+                               loadCart = {loadCart}/>
 
-                  let priceString = 'Free Shipping'
-
-                  if (deliveryOption.priceCents > 0) {
-                    priceString = `${formatMoney(deliveryOption.priceCents)} - Shipping`
-                  }
-
-                  return (
-                    <div key={deliveryOption.id} className="delivery-option">
-                      <input type="radio"
-                        checked={deliveryOption.id === item.deliveryOptionId}
-                        className="delivery-option-input"
-                        name={`delivery-option-${item.productId}`} />
-                      <div>
-                        <div className="delivery-option-date">
-                          {dayjs(deliveryOption.
-                            estimatedDeliveryTimeMs).format('dddd, MMMM, D')}
-                        </div>
-                        <div className="delivery-option-price">
-                          {priceString}
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
             </div>
           </div>
         )
