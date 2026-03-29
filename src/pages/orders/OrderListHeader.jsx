@@ -2,7 +2,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import { formatMoney } from '../../utils/formatMoney'
 
-function OrderListHeader({orders, order}) {
+function OrderListHeader({order}) {
   return (
     <div className="order-header">
       <div className="order-header-left-section">

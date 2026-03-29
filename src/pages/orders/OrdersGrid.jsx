@@ -3,25 +3,25 @@ import { Fragment } from 'react'
 import dayjs from 'dayjs'
 import OrderListHeader from './OrderListHeader'
 import OrderDetailsGrid from './OrderDetailsGrid'
-import { formatMoney } from '../../utils/formatMoney'
 import './orders.css'
-import BuyAgain from '../../assets/images/icons/buy-again.png'
 
-function OrdersGrid({ orders }) {
-
+function OrdersGrid({ orders, loadCart }) {
+  //{console.log(orders)}
   return (
+
+    
+
     <div className="orders-grid">
       {orders.length > 0 && orders.map((order) => {
 
         return (
           <div key={order.id} className="order-container">
 
-            <OrderListHeader orders = {orders}
-                             order = {order} />
+            <OrderListHeader order = {order} />
 
 
-            <OrderDetailsGrid orders = {orders}
-                             order = {order} />
+            <OrderDetailsGrid order = {order}
+                              loadCart = {loadCart} />
           </div>
         )
       })

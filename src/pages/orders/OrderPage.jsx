@@ -9,7 +9,7 @@ import BuyAgain from '../../assets/images/icons/buy-again.png'
 import './orders.css'
 import { formatMoney } from '../../utils/formatMoney';
 
-  function OrderPage({ cart }) {
+  function OrderPage({ cart, loadCart }) {
 
     const [orders, setOrders] = useState([]);
 
@@ -20,7 +20,7 @@ import { formatMoney } from '../../utils/formatMoney';
 
       useEffect(() => {
         ordersData();
-      }, [cart])
+      }, [])
 
     /*
     useEffect(() => {
@@ -44,7 +44,8 @@ import { formatMoney } from '../../utils/formatMoney';
 
         <div className="orders-page">
           <div className="page-title">Your Orders</div>
-          <OrdersGrid orders = {orders} />
+          <OrdersGrid orders = {orders} 
+                      loadCart = {loadCart}/>
 
         </div>
       </>

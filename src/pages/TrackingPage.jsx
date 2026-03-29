@@ -23,15 +23,7 @@ function TrackingPage({ cart, orders }) {
   }, [orderId]);
 
   console.log(tracking);
-  /*
-    if (tracking) {
-      const selectedItem = tracking.products
-        .find((matchingItem) => {
-        matchingItem.productId === productId
-      })
-    }
-  */
-  //console.log(selectedItem);
+
   return (
     <>
 
@@ -56,12 +48,6 @@ function TrackingPage({ cart, orders }) {
           const timePassedMs = totalDeliveryTimeMs * 0.5
           let deliveryProgress = (timePassedMs / totalDeliveryTimeMs) * 100;
 
-          /*
-          if(deliveryProgress > 100) {
-            deliveryProgress = 100
-            console.log(deliveryProgress)
-          }
-          */
          const isPreparing = deliveryProgress < 33;
          const isShipped = deliveryProgress>=33 && deliveryProgress < 100;
          const isDelivered = deliveryProgress >=100;
