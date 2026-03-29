@@ -22,16 +22,10 @@ import { formatMoney } from '../../utils/formatMoney';
         ordersData();
       }, [])
 
-    /*
-    useEffect(() => {
-      const ordersData = async () => {
-        const ordersData = await axios.get(('/api/orders?expand=products'))
-          setOrders(ordersData.data)
+      const resetOrders = async () => {
+        await axios.delete('/api/orders')
+        setOrders([]);
       }
-        ordersData();
-    }, []);
-
-    */
 
     //console.log(orders)
     return (
@@ -41,7 +35,6 @@ import { formatMoney } from '../../utils/formatMoney';
         <link rel="icon" type="image/svg+xml" href={OrderLogo} />
 
         <Header cart={cart} />
-
         <div className="orders-page">
           <div className="page-title">Your Orders</div>
           <OrdersGrid orders = {orders} 

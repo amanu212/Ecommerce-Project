@@ -96,4 +96,25 @@ router.get('/:orderId', async (req, res) => {
   res.json(order);
 });
 
+
+router.delete('/', async (req, res) => {
+  try {
+    await Order.destroy({
+      where: {},
+      truncate: true
+    });
+
+    res.json({ 
+      message: "All orders have been successfully deleted",
+      success: true 
+    });
+  } catch (error) {
+    console.error('Error deleting orders:', error);
+    res.status(500).json({ 
+      error: 'Failed to delete orders',
+      message: error.message 
+    });
+  }
+});
+
 export default router;
