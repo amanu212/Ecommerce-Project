@@ -73,7 +73,7 @@ function CartItemDetails({ item, loadCart }) {
           )
             : (
               <>
-                <input value={cartQuantity} type='number' className='quantity-selector' onChange={updateInputValue} />
+                <input value={cartQuantity} type='number' className='update-input-field' onChange={updateInputValue} />
                 <span onClick={updateCartItem} className = 'save-cancel-span'>Save</span>
                 <span onClick={() => {setIsEditing(false)}} className = 'save-cancel-span'>Cancel</span>
               </>

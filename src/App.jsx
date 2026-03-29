@@ -14,7 +14,7 @@ function App() {
 
   const [products, setProducts ] = useState([])
   const [cart, setCart] = useState([])
-  const [orders, setOrders] = useState([]);
+
 
   const loadProduct = async () => {
     const productsResponse = await axios.get('/api/products')
@@ -25,17 +25,13 @@ function App() {
         setCart(cartsResponse.data)
   }
 
+
+
   useEffect(() => {
 
     loadProduct()
     loadCart()
 
-    const ordersData = async () => {
-      const ordersData = await axios.get('/api/orders?expand=products')
-        setOrders(ordersData.data)
-    }
-
-    ordersData();
     
   }, [])
 
@@ -47,10 +43,12 @@ function App() {
       <Route path="checkout" element = {<CheckoutPage cart = {cart}
                                                       products = {products}
                                                       loadCart = {loadCart}/>} />
-      <Route path="orders" element = {<OrderPage cart = {cart} 
-                                                 orders= {orders}/>} />
+
+      <Route path="orders" element = {<OrderPage cart = {cart} />} />
+
       <Route path="tracking/:orderId/:productId" element = {<TrackingPage cart = {cart}
-                                                                          orders = {orders}/>} />
+                                                                          />} />
+
       <Route path = '*' element = {<ErrorPage cart = {cart} />} />
     </Routes>
   )

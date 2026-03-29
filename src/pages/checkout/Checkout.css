@@ -119,6 +119,12 @@
   margin-left: 3px;
 }
 
+.product-quantity {
+  display: flex;
+  flex-direction: row;
+  gap: 5px
+}
+
 @media (max-width: 1000px) {
   .checkout-page .delivery-options {
     /* grid-column: 1 means this element will be placed
@@ -212,9 +218,8 @@
 
 .update-input-field {
   display: block;
-  width: 60px;
-  padding: 10px;
-
+  width: 40px;
+  padding: 3px;
 }
 
 .save-cancel-span {

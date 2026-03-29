@@ -5,7 +5,7 @@ import BuyAgain from '../../assets/images/icons/buy-again.png'
 
 function OrderDetailsGrid({orders, order}) {
 
-  console.log(orders)
+  //console.log(orders)
   return (
     <div className="order-details-grid">
       {order.products.map((orderItem) => {

@@ -16,7 +16,7 @@ function CheckoutOrderSummary({cart, deliveryOptions, loadCart}) {
           .find((deliveryOption) => {
             return deliveryOption.id === item.deliveryOptionId
           })
-
+          console.log(selectedDeliveryOption)
 
         return (
           <div key={item.id} className="cart-item-container">
