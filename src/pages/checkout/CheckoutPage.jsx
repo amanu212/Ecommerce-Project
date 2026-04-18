@@ -23,15 +23,19 @@ function CheckoutPage({cart, loadCart}) {
       estimatedDeliveryTimeMs: Date.now() + (option.deliveryDays * 24 * 60 * 60 * 1000)
     }));
 
+    //console.log("🚚 Processed delivery options with estimated delivery times:", processedOptions);
     setDeliveryOptions(processedOptions);
 
     const paymentSummaryData = await axios.get('/api/payment-summary')
       setPaymentSummary(paymentSummaryData.data);
+      console.log("💰 Payment summary from backend:", paymentSummaryData.data);
   }
 
   useEffect(() => {
+
     fetchCheckoutData()
-  }, [ cart ])
+    
+  }, [cart])
 
   return (
     <>

@@ -25,8 +25,6 @@ function App() {
         setCart(cartsResponse.data)
   }
 
-
-
   useEffect(() => {
 
     loadProduct()

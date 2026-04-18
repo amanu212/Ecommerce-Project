@@ -18,7 +18,7 @@ function TrackingPage({ cart, orders }) {
       setTracking(trackingData.data);
     }
 
-    trackingData()
+    trackingData();
 
   }, [orderId]);
 
@@ -93,7 +93,9 @@ function TrackingPage({ cart, orders }) {
           );
         })()
       ) : (
+        <a href="/orders">
         <div className="tracking-page">Loading order details...</div>
+        </a>
       )}
     </>
   )

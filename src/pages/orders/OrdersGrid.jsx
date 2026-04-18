@@ -7,8 +7,6 @@ function OrdersGrid({ orders, loadCart }) {
   //{console.log(orders)}
   return (
 
-    
-
     <div className="orders-grid">
       {orders.length > 0 && orders.map((order) => {
 

@@ -28,6 +28,17 @@ function CartItemDetails({ item, loadCart }) {
     setCartQuantity(cartQuantitySelected);
   }
 
+  const updateCartItemKeyDown = async (event) => {
+    if (event.key === 'Enter') {
+      await updateCartItem();
+    }
+
+    else if (event.key === 'Escape') {
+      setIsEditing(false);
+      setCartQuantity(item.quantity);
+    }
+  }
+
   const updateCartItem = async () => {
 
     await axios.put(`/api/cart-items/${item.productId}`, {
@@ -73,7 +84,7 @@ function CartItemDetails({ item, loadCart }) {
           )
             : (
               <>
-                <input value={cartQuantity} type='number' className='update-input-field' onChange={updateInputValue} />
+                <input value={cartQuantity} type='number' className='update-input-field' onChange={updateInputValue} onKeyDown={updateCartItemKeyDown} />
                 <span onClick={updateCartItem} className = 'save-cancel-span'>Save</span>
                 <span onClick={() => {setIsEditing(false)}} className = 'save-cancel-span'>Cancel</span>
               </>

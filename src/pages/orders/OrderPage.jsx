@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState, Fragment, useNavigate } from 'react'
 import dayjs from 'dayjs';
 import Header from '../../components/Header'
 import OrdersGrid from './OrdersGrid'
@@ -12,10 +12,11 @@ import { formatMoney } from '../../utils/formatMoney';
   function OrderPage({ cart, loadCart }) {
 
     const [orders, setOrders] = useState([]);
-
+    window.axios = axios;
       const ordersData = async () => {
         const ordersData = await axios.get('/api/orders?expand=products')
-          setOrders(ordersData.data)
+        console.log(ordersData.data)  
+        setOrders(ordersData.data)
       }
 
       useEffect(() => {
@@ -27,6 +28,10 @@ import { formatMoney } from '../../utils/formatMoney';
         setOrders([]);
       }
 
+      const navigate = useNavigate();
+
+      
+
     //console.log(orders)
     return (
       <>
@@ -35,6 +40,9 @@ import { formatMoney } from '../../utils/formatMoney';
         <link rel="icon" type="image/svg+xml" href={OrderLogo} />
 
         <Header cart={cart} />
+        <button style={{ backgroundColor: 'lightgray', margin: '60px 0 0', border: 'none', padding: '10px 20px', cursor: 'pointer' }} onClick={resetOrders}>
+          Reset the orders
+        </button>
         <div className="orders-page">
           <div className="page-title">Your Orders</div>
           <OrdersGrid orders = {orders} 

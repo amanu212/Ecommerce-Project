@@ -5,9 +5,7 @@ import dayjs from 'dayjs'
 import BuyAgain from '../../assets/images/icons/buy-again.png'
 
 function OrderDetailsGrid({ order, loadCart }) {
-  
 
-    
   return (
     <div className="order-details-grid">
       {order.products.map((orderItem) => {

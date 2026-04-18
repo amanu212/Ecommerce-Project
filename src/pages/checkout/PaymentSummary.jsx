@@ -15,8 +15,7 @@ function PaymentSummary({ paymentSummary, loadCart }) {
   }
 
   return (
-
-
+    
     <div className="payment-summary">
       {paymentSummary && (
         <>
