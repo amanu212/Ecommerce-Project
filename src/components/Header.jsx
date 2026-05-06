@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router'
 import React from "react";
 import { useNavigate } from "react-router";
-import "./Header.css"
+import "./header.css"
 
 import CartIcon from '../assets/images/icons/cart-icon.png'
 import SearchArrow from '../assets/images/icons/search-icon.png'

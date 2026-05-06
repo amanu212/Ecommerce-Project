@@ -1,7 +1,10 @@
 import React from 'react'
 
-import Header from '../components/header'
-import '../components/header.css'
+// 1. Change 'header' to 'Header' (Capital H)
+import Header from '../components/Header' 
+
+// 2. Change 'header.css' to 'Header.css' (Capital H)
+
 import './404-page.css'
 
 import ErrorFavicon from '../assets/images/error-favicon.jpg'
