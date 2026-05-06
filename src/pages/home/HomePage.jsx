@@ -11,6 +11,11 @@ import './HomePage.css'
 
 function HomePage({ products, cart, loadCart }) {
 
+  const loadProduct = async () => {
+    const productsResponse = await axios.get('/api/products')
+      setProducts(productsResponse.data)
+  }
+
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
 

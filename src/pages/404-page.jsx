@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Header from '../components/Header'
-import '../components/Header.css'
+import Header from '../components/header'
+import '../components/header.css'
 import './404-page.css'
 
 import ErrorFavicon from '../assets/images/error-favicon.jpg'

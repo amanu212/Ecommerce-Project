@@ -27,9 +27,6 @@ import { formatMoney } from '../../utils/formatMoney';
         await axios.delete('/api/orders')
         setOrders([]);
       }
-
-      const navigate = useNavigate();
-
       
 
     //console.log(orders)
