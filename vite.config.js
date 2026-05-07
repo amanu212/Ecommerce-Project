@@ -12,5 +12,8 @@ export default defineConfig({
     
       '/images': 'http://localhost:3000'
     }
+  },
+  build: {
+    outDir: '../ecommerce-project/ecommerce-backend/dist'
   }
 })
